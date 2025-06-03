@@ -4,3 +4,13 @@ export const getGenres = async () => {
   const { data } = await API.get("/genres")
   return data.data
 }
+
+export const createGenre = async (data) => {
+  try{
+    const response = await API.post("/genres", data)
+    return response.data
+  } catch (error) {
+  console.log(error);
+  throw error
+  }
+}

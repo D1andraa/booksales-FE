@@ -8,6 +8,10 @@ import Login from "./pages/auth/login"
 import Register from "./pages/auth/register"
 import Home from "./pages/public"
 import Books from "./pages/public/books"
+import AdminAuthors from "./pages/admin/authors"
+import AuthorCreate from "./pages/admin/authors/create"
+import AdminGenres from "./pages/admin/genres"
+import GenreCreate from "./pages/admin/genres/create"
 
 function App() {
   return (
@@ -32,6 +36,18 @@ function App() {
               <Route index element={<AdminBooks />}/>
               <Route path="create" element={<BookCreate />}/>
             </Route>
+
+            <Route path="authors">
+              <Route index element={<AdminAuthors />}/>
+              <Route path="create" element={<AuthorCreate />}/>
+            </Route>
+
+            <Route path="genres">
+              <Route index element={<AdminGenres />}/>
+              <Route path="create" element={<GenreCreate />}/>
+            </Route>
+
+
          </Route>
         </Routes>
      </BrowserRouter>
