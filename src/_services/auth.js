@@ -11,6 +11,29 @@ export const login = async ({ email, password }) => {
   }
 }
 
+export const register = async ({
+  name,
+  email,
+  password,
+  password_confirmation,
+  role,
+}) => {
+  try {
+    const { data } = await API.post("/register", {
+      name,
+      email,
+      password,
+      password_confirmation,
+      role,
+    })
+
+    return data
+  } catch (error) {
+    console.error(error)
+    throw error
+  }
+}
+
 export const logout = async ({ token }) => {
   try {
     const { data } = await API.post('/logout', { token }, {
