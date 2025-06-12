@@ -10,7 +10,6 @@
       email: "",
       password: "",
       password_confirmation: "",
-      role: "customer",
     })
 
     const token = localStorage.getItem("accessToken")
@@ -51,7 +50,7 @@
       }
 
       useEffect(() => {
-        if (token && decodeToken.success && decodeToken?.data?.role) {
+        if (token && decodeToken.success) {
           navigate(decodeToken.data.role === "admin" ? "/admin" : "/")
         }
       }, [token, decodeToken, navigate])
@@ -72,7 +71,7 @@
                       htmlFor="name"
                       className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
-                      Your Name
+                      Name
                     </label>
                     <input
                       type="text"
@@ -139,24 +138,11 @@
                       required
                     />
                   </div>
-                  <div>
-                    <label htmlFor="role" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                      Select Role
-                    </label>
-                    <select
-                      name="role"
-                      id="role"
-                      value={formData.role}
-                      onChange={handleChange}
-                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                    >
-                    <option value="admin">Admin</option>
-                    <option value="customer">Customer</option>
-                    </select>
-                  </div>
+
                   {error && (
                   <div className="text-red-500 text-sm">{error}</div>
                   )}
+                  
                   <button
                     type="submit"
                     disabled={loading}

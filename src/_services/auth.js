@@ -16,7 +16,6 @@ export const register = async ({
   email,
   password,
   password_confirmation,
-  role,
 }) => {
   try {
     const { data } = await API.post("/register", {
@@ -24,12 +23,11 @@ export const register = async ({
       email,
       password,
       password_confirmation,
-      role,
     })
 
     return data
   } catch (error) {
-    console.error(error)
+    console.log(error)
     throw error
   }
 }
